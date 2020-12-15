@@ -26,6 +26,6 @@ for client in istemciler:
 print("--------------------------")
 print("My private ip:",data['ip'])
 print ("My mac: ", end="") 
-print (':'.join(['{:02x}'.format((uuid.getnode() >> dom) & 0xff) 
-for dom in range(0,8*6,8)][::-1])) 
+print (':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff) 
+for ele in range(0,8*6,8)][::-1])) 
 print("My local ip:",local_ip)

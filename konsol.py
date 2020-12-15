@@ -1,7 +1,6 @@
 import json,requests,socket
 import scapy.all as scapy
-from getmac import get_mac_address as gma
-my_mac =gma()
+import uuid 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 local_ip= s.getsockname()[0]
@@ -26,5 +25,7 @@ for client in istemciler:
     print(client["ip"],client["mac"])
 print("--------------------------")
 print("My private ip:",data['ip'])
-print("My mac:",my_mac)
+print ("My mac: ", end="") 
+print (':'.join(['{:02x}'.format((uuid.getnode() >> ele) & 0xff) 
+for ele in range(0,8*6,8)][::-1])) 
 print("My local ip:",local_ip)
